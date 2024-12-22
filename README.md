@@ -6,31 +6,31 @@ As part of my internship, I'm currently working with the **VSDSquadron Mini RISC
 
 ### LAB-1
 
-The first task assigned was to write a C program that calculates the sum of numbers from 1 to n using gEDIT as a Text Editor.
+### The first task assigned was to write a C program that calculates the sum of numbers from 1 to n using gEDIT as a Text Editor.
 
 ![s1](https://github.com/user-attachments/assets/b135d537-d85e-4c8a-8d83-4d548490c80f)
 
 ![s2](https://github.com/user-attachments/assets/c6db5a35-10b1-418f-8644-b8ebcda08b0b)
 
-Ouput generated : Sum of numbers from 1 to 5 is 15
+### **Ouput generated** : Sum of numbers from 1 to 5 is `15`
 
 ![s3](https://github.com/user-attachments/assets/d3c023ef-f651-4496-84f5-d7a0f97fc911)
 
-Main File Depicting the Assembly instructions
+### Main File Depicting the Assembly instructions
 
 ![s4](https://github.com/user-attachments/assets/e57f90cf-d636-444c-9506-cb202f5862a9)
 
 ![s5](https://github.com/user-attachments/assets/e33b502c-1e4b-4dce-a14a-b5633fba165c)
 
-The Number of instructions with -O1 method
+### The Number of instructions with `-O1` method
 
 ![s6](https://github.com/user-attachments/assets/eac2867e-a8ce-444d-8d1b-6f90e2577073)
 
-The Number of instructions with -Ofast method
+### The Number of instructions with `-Ofast` method
 
 ![s7](https://github.com/user-attachments/assets/7c1bdcd6-5b14-4dad-a368-b5bd90f59972)
 
-## TASK 2 - **SPIKE Simulation with Optimization Levels (-O1 vs -Ofast)**  
+## TASK 2 - **SPIKE Simulation with Optimization Levels `(-O1 vs -Ofast)`**  
 
 ### Basic Theory:  
 
@@ -39,17 +39,15 @@ The SPIKE simulator is a RISC-V ISA (Instruction Set Architecture) simulator use
 1. **-O1 (Basic Optimization):** Focuses on reducing code size and improving execution speed without extensive optimization.  
 2. **-Ofast (Aggressive Optimization):** Applies all -O3 optimizations along with additional aggressive techniques for maximum performance, potentially sacrificing strict standard compliance.  
 
-The Second Task assigned was to use Spike Simulation for debugging
-
-Verifying the C code with n=100 with spike simulation
+### Verifying the C code with n=100 with spike simulation
 
 ![s10](https://github.com/user-attachments/assets/a22e4fa3-bfb7-4a2a-9eeb-38eb98a37cdd)
 
-Using spike commands for debugging of instructions
+### Using spike commands for debugging of instructions
 
 ![s11](https://github.com/user-attachments/assets/0faaaadf-ef9a-4e03-86a4-f76c58440937)
 
-After implementations of instruction the sp value gets reduced by factor a hexadecimal fector of 10
+### After implementations of instruction the sp value gets reduced by factor a hexadecimal fector of 10
 
 ![s9](https://github.com/user-attachments/assets/9b8d108a-f069-47af-8eae-2538c64314a5)
 
@@ -63,6 +61,7 @@ After implementations of instruction the sp value gets reduced by factor a hexad
 4. Upload the identified 32-bit patterns and instruction analysis to the GitHub repository.  
 
 ### RISC-V ISA
+
 A RISC-V ISA is defined as a base integer ISA, which must be present in any implementation, plus
 optional extensions to the base ISA. The base integer ISAs are very similar to that of the early RISC
 processors except with no branch delay slots and with support for optional variable-length instruction
@@ -75,15 +74,16 @@ encodings.
 
 RISC-V instructions are organized into five main types based on how operands and data are accessed and manipulated.
 
-RISC-V Instruction Types (R, I, S, B, U, J)
+RISC-V Instruction Types `(R, I, S, B, U, J)`
 RISC-V instructions are categorized into six main types, each with a specific format for accessing and manipulating operands. The structure of these instructions includes fields like opcode, rd, rs1, rs2, and immediate values, which allow for flexible operation encoding.
 
-1. R-Type (Register-Register) Instruction
+1. `R-Type (Register-Register)` Instruction
 
-Purpose
+Purpose:-
+
 The R-Type format is used for operations that involve two source registers and a destination register. These instructions typically perform arithmetic or logical operations, where data is read from two registers, processed, and stored in a third register.
 
-Fields
+Fields:-
 
 1.opcode (7 bits): Determines the type of operation (e.g., integer arithmetic, floating-point arithmetic).
 
@@ -99,12 +99,13 @@ Fields
 
 ![s12](https://github.com/user-attachments/assets/640d75a7-bc13-462c-b8c4-2595a93282c9)
 
-2. I-Type (Immediate) Instruction
-3. 
-Purpose
+2. `I-Type (Immediate)` Instruction
+   
+Purpose:-
+
 I-Type instructions perform operations that involve one register and an immediate (constant) value. This type is often used for load instructions, arithmetic with a constant, and setting register values with immediate values.
 
-Fields
+Fields:-
 
 1.opcode (7 bits): Specifies the operation (e.g., load, arithmetic with an immediate).
 
@@ -118,11 +119,13 @@ Fields
 
 ![s13](https://github.com/user-attachments/assets/4dfe14dc-f1ca-428d-a5a2-fb560a4dc3f7)
 
-3. S-Type (Store) Instruction
-Purpose
+3. `S-Type (Store)` Instruction
+   
+Purpose:-
+
 S-Type instructions are used for store operations, where data from a register is written to memory. The address is calculated by adding an immediate value to a base address provided by a register.
 
-Fields
+Fields:-
 
 1.opcode (7 bits): Specifies the store operation (e.g., sw for store word).
 
@@ -136,11 +139,13 @@ Fields
 
 ![s14](https://github.com/user-attachments/assets/1b598915-095c-4079-b8ab-3a00d039d8cc)
 
-4. B-Type (Branch) Instruction
-Purpose
+4. `B-Type (Branch)` Instruction
+   
+Purpose:-
+
 B-Type instructions enable conditional branching, allowing the program to jump to a different location based on the result of a comparison. This comparison is between two registers, with a branch taken if the specified condition is met.
 
-Fields
+Fields:-
 
 1.opcode (7 bits): Indicates a branch operation.
 
@@ -154,11 +159,13 @@ Fields
 
 ![s15](https://github.com/user-attachments/assets/22afde3f-b7dd-4e5e-b58f-2f3673dc89bd)
 
-5. U-Type (Upper Immediate) Instruction
-Purpose
+5. `U-Type (Upper Immediate)` Instruction
+   
+Purpose:-
+
 U-Type instructions are used to load a 20-bit immediate value into the upper 20 bits of a register, typically for setting larger immediate values or addresses. This format is often used with instructions that deal with high-order constants.
 
-Fields
+Fields:-
 
 1.opcode (7 bits): Indicates an upper immediate operation (e.g., lui for Load Upper Immediate).
 
@@ -168,11 +175,13 @@ Fields
 
 ![s16](https://github.com/user-attachments/assets/af9c25d9-c176-4c5c-abc0-56d6fc1e8d3f)
 
-6. J-Type (Jump) Instruction
-Purpose
+6. `J-Type (Jump) Instruction
+   
+Purpose:-
+
 J-Type instructions support unconditional jumps to an address computed by adding an immediate value to the current program counter (PC). They are often used for function calls and unconditional jumps.
 
-Fields
+Fields:-
 
 1.opcode (7 bits): Indicates a jump operation (e.g., jal for Jump and Link).
 
@@ -259,7 +268,7 @@ Fields
     - **Description**: Perform bitwise XOR on `a4` and `a3`, store result in `a6`.
     - **Encoding**: `0x00e2f333`
 
-### Summary of 15 RISC-V Instructions with 32-Bit Encoding
+### Summary of 15 RISC-V Instructions with 32-Bit Encoding:-
 
 | Assembly Instruction   | Instruction Type | Encoding (Hexadecimal) |
 |------------------------|------------------|-------------------------|
@@ -325,45 +334,36 @@ Once the simulation generates the `.vcd` (Value Change Dump) file, follow these 
 
 ![s19](https://github.com/user-attachments/assets/dc636826-99b4-4da6-816a-d70eb1c82259)
 
-## Instructions 1: ADD r1,r1,r2
+## Below is the Screenshots of the Wave generated:-
 
 ![s20](https://github.com/user-attachments/assets/af619a90-d085-4ae0-aefe-f73bfb153bb1)
 
 ![s21](https://github.com/user-attachments/assets/2980f6b7-e645-4ff7-85a7-3c87ace811a6)
 
-## Instructions 2: SUB r1,r1,r2
 
 ![s22](https://github.com/user-attachments/assets/506e1cb8-4d25-41a2-a006-09d9b002c799)
 
-## Instructions 3: AND r1,r1,r2
 
 ![s23](https://github.com/user-attachments/assets/26d4787a-7273-4101-beb0-a8c03410db73)
 
-## Instructions 4: OR r1,r1,r2
 
 ![s24](https://github.com/user-attachments/assets/e31c835d-6184-4cc7-ba7a-057fe0183f0a)
 
-## Instructions 5: OR r1,r1,r2
 
 ![s25](https://github.com/user-attachments/assets/8b787a5d-2289-444e-a719-916e85ba6cda)
 
-## Instructions 6: XOR r1,r1,r2
 
 ![s26](https://github.com/user-attachments/assets/ccef042c-ac00-4170-aa3c-a82a69b0c2f5)
 
-## Instructions 7: ADD r1,r1,r2
 
 ![s27](https://github.com/user-attachments/assets/255e41dc-4250-48a7-a443-430fa5148d65)
 
-## Instructions 8: SLT r1,r1,r2
 
 ![s28](https://github.com/user-attachments/assets/f8d0463d-2143-4747-85eb-835c4e08d9aa)
 
-## Instructions 9: SLL r1,r1,r2
 
 ![s29](https://github.com/user-attachments/assets/c1957708-0d9f-4bcb-90ac-e4276efe6dde)
 
-## Instructions 1: ADD r1,r1,r2
 
 ![s30](https://github.com/user-attachments/assets/0d0c2004-6890-439a-8033-027337f4b986)
 
