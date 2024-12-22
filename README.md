@@ -331,35 +331,35 @@ Once the simulation generates the `.vcd` (Value Change Dump) file, follow these 
 
 ![s21](https://github.com/user-attachments/assets/2980f6b7-e645-4ff7-85a7-3c87ace811a6)
 
-## Instructions 1: SUB r1,r1,r2
+## Instructions 2: SUB r1,r1,r2
 
 ![s22](https://github.com/user-attachments/assets/506e1cb8-4d25-41a2-a006-09d9b002c799)
 
-## Instructions 1: ADD r1,r1,r2
+## Instructions 3: AND r1,r1,r2
 
 ![s23](https://github.com/user-attachments/assets/26d4787a-7273-4101-beb0-a8c03410db73)
 
-## Instructions 1: ADD r1,r1,r2
+## Instructions 4: OR r1,r1,r2
 
 ![s24](https://github.com/user-attachments/assets/e31c835d-6184-4cc7-ba7a-057fe0183f0a)
 
-## Instructions 1: ADD r1,r1,r2
+## Instructions 5: OR r1,r1,r2
 
 ![s25](https://github.com/user-attachments/assets/8b787a5d-2289-444e-a719-916e85ba6cda)
 
-## Instructions 1: ADD r1,r1,r2
+## Instructions 6: XOR r1,r1,r2
 
 ![s26](https://github.com/user-attachments/assets/ccef042c-ac00-4170-aa3c-a82a69b0c2f5)
 
-## Instructions 1: ADD r1,r1,r2
+## Instructions 7: ADD r1,r1,r2
 
 ![s27](https://github.com/user-attachments/assets/255e41dc-4250-48a7-a443-430fa5148d65)
 
-## Instructions 1: ADD r1,r1,r2
+## Instructions 8: SLT r1,r1,r2
 
 ![s28](https://github.com/user-attachments/assets/f8d0463d-2143-4747-85eb-835c4e08d9aa)
 
-## Instructions 1: ADD r1,r1,r2
+## Instructions 9: SLL r1,r1,r2
 
 ![s29](https://github.com/user-attachments/assets/c1957708-0d9f-4bcb-90ac-e4276efe6dde)
 
