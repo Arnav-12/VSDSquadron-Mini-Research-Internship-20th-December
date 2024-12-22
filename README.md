@@ -2,7 +2,7 @@
 
 As part of my internship, I'm currently working with the **VSDSquadron Mini RISC-V Development Kit**, a robust platform built on the RISC-V architecture. This project offers an opportunity to dive into embedded systems, exploring how RISC-V integrates into various development workflows. I'm gaining practical, hands-on experience with its core features while applying cutting-edge techniques in embedded system design.
 
-## TASK-1
+## TASK 1 - RISC-V Toolchain Setup and Lab Task Execution
 
 ### LAB-1
 
@@ -30,7 +30,14 @@ The Number of instructions with -Ofast method
 
 ![s7](https://github.com/user-attachments/assets/7c1bdcd6-5b14-4dad-a368-b5bd90f59972)
 
-## TASK-2
+## TASK 2 - **SPIKE Simulation with Optimization Levels (-O1 vs -Ofast)**  
+
+### Basic Theory:  
+
+The SPIKE simulator is a RISC-V ISA (Instruction Set Architecture) simulator used to test and validate RISC-V compiled programs. In this task, a simple C program is written, compiled using the RISC-V GCC toolchain, and executed on SPIKE. The behavior of the program is observed with two different optimization levels:  
+
+1. **-O1 (Basic Optimization):** Focuses on reducing code size and improving execution speed without extensive optimization.  
+2. **-Ofast (Aggressive Optimization):** Applies all -O3 optimizations along with additional aggressive techniques for maximum performance, potentially sacrificing strict standard compliance.  
 
 The Second Task assigned was to use Spike Simulation for debugging
 
@@ -46,7 +53,14 @@ After implementations of instruction the sp value gets reduced by factor a hexad
 
 ![s9](https://github.com/user-attachments/assets/9b8d108a-f069-47af-8eae-2538c64314a5)
 
-## TASK-3
+## TASK 3 - **Analysis of RISC-V Instruction Types and 32-bit Encodings**  
+
+### Objective:  
+
+1. Study RISC-V documentation to list the characteristics of R, I, S, B, U, and J instruction types.  
+2. Extract 15 unique RISC-V instructions from the `riscv-objdump` of an application program.  
+3. Decode the exact 32-bit binary patterns of these instructions and identify their instruction type.  
+4. Upload the identified 32-bit patterns and instruction analysis to the GitHub repository.  
 
 ### RISC-V ISA
 A RISC-V ISA is defined as a base integer ISA, which must be present in any implementation, plus
@@ -264,6 +278,94 @@ Fields
 | `and a4, a3, a2`       | R-Type          | `0x00c2e2b3`           |
 | `or a5, a4, a3`        | R-Type          | `0x00e2f2b3`           |
 | `xor a6, a4, a3`       | R-Type          | `0x00e2f333`           |
+
+# TASK 4 - **Functional Simulation of RISC-V Core Using Verilog**  
+
+### Objective:  
+
+1. Perform functional simulation using the provided RISC-V core Verilog netlist and testbench.  
+2. Execute specified commands to test various functionalities of the core.  
+3. Capture waveform snapshots showcasing the simulation results.  
+4. Upload the waveform snapshots and observations to the GitHub repository for documentation and reference.
+
+### How to Open GTKWave for Functional Simulation  
+
+Follow the steps below to clone the repository, simulate the RISC-V core, and open GTKWave for waveform analysis:  
+
+1. **Clone the GitHub Repository:**  
+   ```bash  
+   git clone https://github.com/vinayrayapati/rv32i.git 
+   ```  
+
+2. **Navigate to the Project Directory:**  
+   ```bash  
+   cd rv32i  
+   ```  
+
+3. **Compile the Verilog Files:**  
+   ```bash  
+   iverilog -o iiitb_rv32i iiitb_rv32i.v iiitb_rv32i_tb.v  
+   ```  
+
+4. **Run the Simulation:**  
+   ```bash  
+   ./iiitb_rv32i  
+   ```
+   
+![s18](https://github.com/user-attachments/assets/d740ebc7-3d28-401c-8acb-05d6fb377732)
+
+### Visualizing the Waveform in GTKWave  
+
+Once the simulation generates the `.vcd` (Value Change Dump) file, follow these steps to visualize the waveform in GTKWave:  
+
+1. **Run GTKWave with the Generated .vcd File:**  
+   ```bash  
+   gtkwave iiitb_rv321.vcd  
+   ```  
+
+![s19](https://github.com/user-attachments/assets/dc636826-99b4-4da6-816a-d70eb1c82259)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s20](https://github.com/user-attachments/assets/af619a90-d085-4ae0-aefe-f73bfb153bb1)
+
+![s21](https://github.com/user-attachments/assets/2980f6b7-e645-4ff7-85a7-3c87ace811a6)
+
+## Instructions 1: SUB r1,r1,r2
+
+![s22](https://github.com/user-attachments/assets/506e1cb8-4d25-41a2-a006-09d9b002c799)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s23](https://github.com/user-attachments/assets/26d4787a-7273-4101-beb0-a8c03410db73)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s24](https://github.com/user-attachments/assets/e31c835d-6184-4cc7-ba7a-057fe0183f0a)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s25](https://github.com/user-attachments/assets/8b787a5d-2289-444e-a719-916e85ba6cda)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s26](https://github.com/user-attachments/assets/ccef042c-ac00-4170-aa3c-a82a69b0c2f5)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s27](https://github.com/user-attachments/assets/255e41dc-4250-48a7-a443-430fa5148d65)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s28](https://github.com/user-attachments/assets/f8d0463d-2143-4747-85eb-835c4e08d9aa)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s29](https://github.com/user-attachments/assets/c1957708-0d9f-4bcb-90ac-e4276efe6dde)
+
+## Instructions 1: ADD r1,r1,r2
+
+![s30](https://github.com/user-attachments/assets/0d0c2004-6890-439a-8033-027337f4b986)
 
 
 
