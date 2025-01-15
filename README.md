@@ -367,5 +367,129 @@ Once the simulation generates the `.vcd` (Value Change Dump) file, follow these 
 
 ![s30](https://github.com/user-attachments/assets/0d0c2004-6890-439a-8033-027337f4b986)
 
+# **TASK 5 - MotionBuzzer**  
+
+## **Project Overview**
+
+The **MotionGuard** system detects motion using a PIR sensor. In its default state (no motion detected), a buzzer is activated to signal alert status. When motion is detected, the buzzer turns off, and an LED lights up to indicate motion. This configuration can be used for scenarios where maintaining attention during idle states is critical, such as securing restricted zones or monitoring for unauthorized absence of movement.
+
+## **Components Required**
+
+1. **VSD Board (CH32V00x microcontroller)** – 1  
+2. **PIR Sensor** – 1  
+3. **Buzzer** – 1  
+4. **1 LED** – 1  
+5. **Breadboard** – 1  
+6. **Jumper Wires** – 7+  
+
+## **Circuit Diagram**
+
+![Screenshot 2025-01-15 165831](https://github.com/user-attachments/assets/a1e056c9-75b5-4cf9-8157-2f4a5efbdbb9)
+
+## **Code**
+
+```#include <ch32v00x.h>
+#include <debug.h>
+
+#define BLINKY_GPIO_PORT GPIOD
+#define LED1_GPIO_PIN GPIO_Pin_6  // LED for motion detected (PD6)
+#define BUZZER_GPIO_PIN GPIO_Pin_2  // Buzzer for no motion detected (PD2)
+#define PIR_GPIO_PIN GPIO_Pin_3  // PIR sensor output connected to GPIO Pin 3 (PD3)
+
+#define BLINKY_CLOCK_ENABLE RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE)
+
+void NMI_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+void HardFault_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+void Delay_Init(void);
+void Delay_Ms(uint32_t n);
+void CheckPirStatus(void);
+
+int main(void)
+{
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+    SystemCoreClockUpdate();
+    Delay_Init();
+
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+
+    BLINKY_CLOCK_ENABLE;
+
+    // Initialize LED1 and Buzzer
+    GPIO_InitStructure.GPIO_Pin = LED1_GPIO_PIN | BUZZER_GPIO_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+    // Configure PIR sensor input pin
+    GPIO_InitStructure.GPIO_Pin = PIR_GPIO_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Input with pull-up
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+    while (1)
+    {
+        CheckPirStatus();
+        Delay_Ms(1000);
+    }
+}
+
+void CheckPirStatus() {
+    uint8_t pirStatus = GPIO_ReadInputDataBit(GPIOD, PIR_GPIO_PIN);
+
+    if (pirStatus == 1) {
+        GPIO_WriteBit(GPIOD, LED1_GPIO_PIN, SET);  // Turn on LED1
+        GPIO_WriteBit(GPIOD, BUZZER_GPIO_PIN, RESET); // Turn off Buzzer
+    } else {
+        GPIO_WriteBit(GPIOD, LED1_GPIO_PIN, RESET); // Turn off LED1
+        GPIO_WriteBit(GPIOD, BUZZER_GPIO_PIN, SET);   // Turn on Buzzer
+    }
+}
+
+void NMI_Handler(void) 
+{
+    // Handle non-maskable interrupt 
+}
+
+void HardFault_Handler(void)
+{
+    while (1)
+    {
+        // Handle hard fault 
+    }
+}
+
+void Delay_Ms(uint32_t ms)
+{
+    volatile uint32_t count = ms * 8000;  
+    while (count--) {
+        __asm__("nop"); // No operation for delay
+    }
+}
+```
+
+## **Hardware Connections Table**
+
+| **Component**   | **VSD Board Pin** | **Breadboard Pin** | **Connections**                     |
+|-----------------|------------------|-------------------|--------------------------------------|
+| **PIR Sensor**  | PD3 (GPIO Pin 3)  | OUT                | Motion detection signal              |
+|                 | GND               | GND                | Ground                               |
+|                 | VCC               | 5V                 | Power supply                         |
+| **Buzzer**      | PD2 (GPIO Pin 2)  | Positive terminal  | Active when **no motion** detected   |
+|                 | GND               | Negative terminal  | Ground                               |
+| **LED**         | PD6 (GPIO Pin 6)  | Anode              | Active when **motion** is detected   |
+|                 | GND               | Cathode            | Ground                               |
 
 
+## **Explanation of Connections**
+- The **PIR sensor** output connects to **PD3**, which reads motion detection status.  
+- The **buzzer** is connected to **PD2** and remains **active** when there is **no motion** detected.  
+- The **LED** is connected to **PD6** and lights up when **motion is detected**.  
+- Power is supplied to the PIR sensor through **5V** on the VSD board.  
+- All ground connections link to a common ground bus.
+
+This configuration ensures proper indication of both states:
+- **No motion detected**: The **buzzer** is on.  
+- **Motion detected**: The **buzzer** turns off, and the **LED** turns on.
+
+## **Application Video** 
+
+https://drive.google.com/file/d/19B5Rxx0nPRtrspNgI2qkOewbvTMqA27s/view?usp=drive_link
