@@ -371,7 +371,7 @@ Once the simulation generates the `.vcd` (Value Change Dump) file, follow these 
 
 ## **Project Overview**
 
-The **MotionGuard** system detects motion using a PIR sensor. In its default state (no motion detected), a buzzer is activated to signal alert status. When motion is detected, the buzzer turns off, and an LED lights up to indicate motion. This configuration can be used for scenarios where maintaining attention during idle states is critical, such as securing restricted zones or monitoring for unauthorized absence of movement.
+The **MotionBuzzer** system detects motion using a PIR sensor. In its default state (no motion detected), a buzzer is activated to signal alert status. When motion is detected, the buzzer turns off, and an LED lights up to indicate motion. This configuration can be used for scenarios where maintaining attention during idle states is critical, such as securing restricted zones or monitoring for unauthorized absence of movement.
 
 ## **Components Required**
 
