@@ -371,7 +371,7 @@ Once the simulation generates the `.vcd` (Value Change Dump) file, follow these 
 
 ## **Project Overview**
 
-The **MotionBuzzer** system detects motion using a PIR sensor. In its default state (no motion detected), a buzzer is activated to signal alert status. When motion is detected, the buzzer turns off, and an LED lights up to indicate motion. This configuration can be used for scenarios where maintaining attention during idle states is critical, such as securing restricted zones or monitoring for unauthorized absence of movement.
+The **MotionBuzzer** system detects motion using a PIR sensor. In its default state (no motion detected), a LED is activated to signal alert status. When motion is detected, LED turns off,the buzzer turns on to indicate motion. This configuration can be used for scenarios where maintaining attention during idle states is critical, such as securing restricted zones or monitoring for unauthorized absence of movement.
 
 ## **Components Required**
 
@@ -392,8 +392,8 @@ The **MotionBuzzer** system detects motion using a PIR sensor. In its default st
 #include <debug.h>
 
 #define BLINKY_GPIO_PORT GPIOD
-#define LED1_GPIO_PIN GPIO_Pin_6  // LED for motion detected (PD6)
-#define BUZZER_GPIO_PIN GPIO_Pin_2  // Buzzer for no motion detected (PD2)
+#define Buzzer_GPIO_PIN GPIO_Pin_6  // Buzzer for motion detected (PD6)
+#define LED1_GPIO_PIN GPIO_Pin_2  // LED for no motion detected (PD2)
 #define PIR_GPIO_PIN GPIO_Pin_3  // PIR sensor output connected to GPIO Pin 3 (PD3)
 
 #define BLINKY_CLOCK_ENABLE RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE)
@@ -473,23 +473,23 @@ void Delay_Ms(uint32_t ms)
 | **PIR Sensor**  | PD3 (GPIO Pin 3)  | OUT                | Motion detection signal              |
 |                 | GND               | GND                | Ground                               |
 |                 | VCC               | 5V                 | Power supply                         |
-| **Buzzer**      | PD2 (GPIO Pin 2)  | Positive terminal  | Active when **no motion** detected   |
+| **Buzzer**      | PD2 (GPIO Pin 2)  | Positive terminal  | Active when **motion** is detected   |
 |                 | GND               | Negative terminal  | Ground                               |
-| **LED**         | PD6 (GPIO Pin 6)  | Anode              | Active when **motion** is detected   |
+| **LED**         | PD6 (GPIO Pin 6)  | Anode              | Active when **no motion** is detected   |
 |                 | GND               | Cathode            | Ground                               |
 
 
 ## **Explanation of Connections**
 - The **PIR sensor** output connects to **PD3**, which reads motion detection status.  
-- The **buzzer** is connected to **PD2** and remains **active** when there is **no motion** detected.  
-- The **LED** is connected to **PD6** and lights up when **motion is detected**.  
+- The **LED** is connected to **PD2** and lights up when **motion is not detected**.   
+- The **Buzzer** is connected to **PD6** and becomes **active** when the **motion** detected.  
 - Power is supplied to the PIR sensor through **5V** on the VSD board.  
 - All ground connections link to a common ground bus.
 
 This configuration ensures proper indication of both states:
-- **No motion detected**: The **buzzer** is on.  
-- **Motion detected**: The **buzzer** turns off, and the **LED** turns on.
+- **No motion detected**: The **LED** is on.  
+- **Motion detected**: The **LED** turns off, and the **** turns on.
 
 ## **Application Video** 
 
-https://drive.google.com/file/d/19B5Rxx0nPRtrspNgI2qkOewbvTMqA27s/view?usp=drive_link
+https://drive.google.com/file/d/1QyBLt-G4fQeWcV6rZNaY-xBcR66yYNoH/view?usp=drive_link
