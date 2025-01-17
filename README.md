@@ -488,7 +488,7 @@ void Delay_Ms(uint32_t ms)
 
 This configuration ensures proper indication of both states:
 - **No motion detected**: The **LED** is on.  
-- **Motion detected**: The **LED** turns off, and the **** turns on.
+- **Motion detected**: The **LED** turns off, and the **buzzer** turns on.
 
 ## **Application Video** 
 
