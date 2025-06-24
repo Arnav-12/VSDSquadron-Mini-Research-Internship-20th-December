@@ -1,6 +1,6 @@
 # VSDSquadron-Mini-Research-Internship-20th-December
 
-As part of my internship, I'm currently working with the **VSDSquadron Mini RISC-V Development Kit**, a robust platform built on the RISC-V architecture. This project offers an opportunity to dive into embedded systems, exploring how RISC-V integrates into various development workflows. I'm gaining practical, hands-on experience with its core features while applying cutting-edge techniques in embedded system design.
+As part of my internship, I'm currently working with the **VSDSquadron Mini RISC-V Development Kit**, a robust platform built on the RISC-V architecture. This project offers an opportunity to dive into embedded systems, exploring how RISC-V integrates into various development workflows.
 
 ## TASK 1 - RISC-V Toolchain Setup and Lab Task Execution
 
